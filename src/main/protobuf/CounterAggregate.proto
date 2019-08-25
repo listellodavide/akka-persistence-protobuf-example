@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+import "scalapb/scalapb.proto";
+
+option (scalapb.options) = {
+  package_name: "io.adiwave.akka.persistenceprotobuf.persistence.CounterAggregateProto"
+  flat_package: true
+};
+
+message OperationEvt {
+
+    option (scalapb.message).extends = "io.adiwave.akka.persistenceprotobuf.actors.CounterActor.OperationEvt";
+
+    int64 id = 1;
+
+}

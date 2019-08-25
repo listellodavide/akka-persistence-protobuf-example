@@ -5,9 +5,11 @@ import akka.serialization.SerializerWithStringManifest
 object ProtobufSerializer {
 
   import io.adiwave.akka.persistenceprotobuf.persistence.GarageAggregateProto
+  import io.adiwave.akka.persistenceprotobuf.persistence.CounterAggregateProto
 
-  final val manifest_GarageActor$AddCarEvt     = classOf[GarageAggregateProto.AddCarEvt]   .getName
+  final val manifest_GarageActor$AddCarEvt     = classOf[GarageAggregateProto.AddCarEvt].getName
   final val manifest_GarageActor$UpdateCarEvt  = classOf[GarageAggregateProto.UpdateCarEvt].getName
+  final val manifest_CounterActor$OperationEvt  = classOf[CounterAggregateProto.OperationEvt].getName
 
 }
 
@@ -15,6 +17,7 @@ class ProtobufSerializer extends SerializerWithStringManifest {
 
   import ProtobufSerializer._
   import io.adiwave.akka.persistenceprotobuf.persistence.GarageAggregateProto
+  import io.adiwave.akka.persistenceprotobuf.persistence.CounterAggregateProto
 
   /**
     * Serializer identifier
@@ -38,6 +41,7 @@ class ProtobufSerializer extends SerializerWithStringManifest {
 
     case z: GarageAggregateProto.AddCarEvt      => z.toByteArray
     case z: GarageAggregateProto.UpdateCarEvt   => z.toByteArray
+    case z: CounterAggregateProto.OperationEvt   => z.toByteArray
 
   }
 
@@ -53,6 +57,7 @@ class ProtobufSerializer extends SerializerWithStringManifest {
 
       case `manifest_GarageActor$AddCarEvt`     => GarageAggregateProto.AddCarEvt.parseFrom(bytes)
       case `manifest_GarageActor$UpdateCarEvt`  => GarageAggregateProto.UpdateCarEvt.parseFrom(bytes)
+      case `manifest_CounterActor$OperationEvt`  => CounterAggregateProto.OperationEvt.parseFrom(bytes)
 
     }
 

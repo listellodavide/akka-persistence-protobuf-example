@@ -7,7 +7,9 @@ import akka.util.Timeout
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
 import io.adiwave.akka.persistenceprotobuf.actors.GarageActor
+import io.adiwave.akka.persistenceprotobuf.actors.CounterActor
 import io.adiwave.akka.persistenceprotobuf.persistence.GarageAggregate._
+import io.adiwave.akka.persistenceprotobuf.persistence.CounterAggregate._
 
 object Main extends App {
 
@@ -30,5 +32,16 @@ object Main extends App {
 
   println("UpdateCar\t'" + askGarageActor( UpdateCarCmd(Car(-1, "BMW F30 320d", 400)) ) + "'")
   println("GetAllCar\t'" + askGarageActor( GetAllCarCmd() ) + "'")
+
+
+  val counter = system.actorOf(Props[CounterActor])
+
+  counter ! Cmd(Increment(3))
+
+  counter ! Cmd(Increment(5))
+
+  counter ! Cmd(Decrement(3))
+
+  counter ! "print"
 
 }
