@@ -3,7 +3,7 @@ syntax = "proto3";
 import "scalapb/scalapb.proto";
 
 option (scalapb.options) = {
-  package_name: "io.adiwave.akka.persistenceprotobuf.GarageAggregateProto"
+  package_name: "io.adiwave.akka.persistenceprotobuf.persistence.GarageAggregateProto"
   flat_package: true
 };
 

@@ -3,11 +3,11 @@ package io.adiwave.akka.persistenceprotobuf
 import akka.actor.{ActorSystem, Props}
 import akka.pattern.ask
 import akka.util.Timeout
-import io.adiwave.akka.persistenceprotobuf.actors.GarageActor
-import io.adiwave.akka.persistenceprotobuf.persistence.GarageAggregate._
 
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
+import io.adiwave.akka.persistenceprotobuf.actors.GarageActor
+import io.adiwave.akka.persistenceprotobuf.persistence.GarageAggregate._
 
 object Main extends App {
 

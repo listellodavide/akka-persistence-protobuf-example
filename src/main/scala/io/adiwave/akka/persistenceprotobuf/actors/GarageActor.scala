@@ -5,6 +5,9 @@ import akka.persistence.{PersistentActor, SnapshotOffer}
 
 object GarageActor {
 
+  import io.adiwave.akka.persistenceprotobuf.persistence.GarageAggregate._
+  import io.adiwave.akka.persistenceprotobuf.persistence.GarageAggregateProto
+
   trait GarageEvt
 
   val persistenceId: String = "garage-actor"
@@ -22,6 +25,8 @@ object GarageActor {
 class GarageActor extends PersistentActor with ActorLogging {
 
   import GarageActor._
+  import io.adiwave.akka.persistenceprotobuf.persistence.GarageAggregate._
+  import io.adiwave.akka.persistenceprotobuf.persistence.GarageAggregateProto
 
   override def persistenceId: String = GarageActor.persistenceId
 

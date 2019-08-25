@@ -16,10 +16,11 @@ libraryDependencies += "org.fusesource.leveldbjni"   % "leveldbjni-all"   % "1.8
 // PostgresSQL DB
 libraryDependencies += "be.wegenenverkeer" %% "akka-persistence-pg" % "0.10.0"
 
-//Trigger ScalaPB (see ./project/protoc.sbt)
-PB.targets in Compile := Seq(
-  scalapb.gen() -> (sourceManaged in Compile).value
-)
 
 //Import-Bug (scalaPB)
 libraryDependencies += "com.thesamet.scalapb" %% "scalapb-runtime" % scalapb.compiler.Version.scalapbVersion % "protobuf"
+
+
+PB.targets in Compile := Seq(
+  scalapb.gen() -> (sourceManaged in Compile).value
+)

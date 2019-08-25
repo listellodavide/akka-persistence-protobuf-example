@@ -1,9 +1,10 @@
 package io.adiwave.akka.persistenceprotobuf.utils
 
 import akka.serialization.SerializerWithStringManifest
-import de.mb.akka.protobufexample.persistence.GarageAggregateProto._
 
 object ProtobufSerializer {
+
+  import io.adiwave.akka.persistenceprotobuf.persistence.GarageAggregateProto
 
   final val manifest_GarageActor$AddCarEvt     = classOf[GarageAggregateProto.AddCarEvt]   .getName
   final val manifest_GarageActor$UpdateCarEvt  = classOf[GarageAggregateProto.UpdateCarEvt].getName
@@ -13,10 +14,10 @@ object ProtobufSerializer {
 class ProtobufSerializer extends SerializerWithStringManifest {
 
   import ProtobufSerializer._
+  import io.adiwave.akka.persistenceprotobuf.persistence.GarageAggregateProto
 
   /**
     * Serializer identifier
-    *
     * @return Int
     */
   override def identifier: Int = 9002
